@@ -1,0 +1,3392 @@
+{
+    "openapi": "3.1.0",
+    "info": {
+      "title": "FastAPI",
+      "version": "0.1.0"
+    },
+    "paths": {
+      "/list-apps": {
+        "get": {
+          "summary": "List Apps",
+          "operationId": "list_apps",
+          "responses": {
+            "200": {
+              "description": "Successful Response",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "items": {
+                      "type": "string"
+                    },
+                    "type": "array",
+                    "title": "Response List Apps List Apps Get"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/debug/trace/{event_id}": {
+        "get": {
+          "summary": "Get Trace Dict",
+          "operationId": "get_trace_dict",
+          "parameters": [
+            {
+              "name": "event_id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string",
+                "title": "Event Id"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Successful Response",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "title": "Response Get Trace Dict Debug Trace  Event Id  Get"
+                  }
+                }
+              }
+            },
+            "422": {
+              "description": "Validation Error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/apps/{app_name}/users/{user_id}/sessions/{session_id}": {
+        "get": {
+          "summary": "Get Session",
+          "operationId": "get_session",
+          "parameters": [
+            {
+              "name": "app_name",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string",
+                "title": "App Name"
+              }
+            },
+            {
+              "name": "user_id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string",
+                "title": "User Id"
+              }
+            },
+            {
+              "name": "session_id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string",
+                "title": "Session Id"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Successful Response",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Session"
+                  }
+                }
+              }
+            },
+            "422": {
+              "description": "Validation Error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "post": {
+          "summary": "Create Session With Id",
+          "operationId": "create_session_with_id",
+          "parameters": [
+            {
+              "name": "app_name",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string",
+                "title": "App Name"
+              }
+            },
+            {
+              "name": "user_id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string",
+                "title": "User Id"
+              }
+            },
+            {
+              "name": "session_id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string",
+                "title": "Session Id"
+              }
+            }
+          ],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "anyOf": [
+                    {
+                      "type": "object",
+                      "additionalProperties": true
+                    },
+                    {
+                      "type": "string"
+                    }
+                  ],
+                  "title": "State"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Successful Response",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Session"
+                  }
+                }
+              }
+            },
+            "422": {
+              "description": "Validation Error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "delete": {
+          "summary": "Delete Session",
+          "operationId": "delete_session",
+          "parameters": [
+            {
+              "name": "app_name",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string",
+                "title": "App Name"
+              }
+            },
+            {
+              "name": "user_id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string",
+                "title": "User Id"
+              }
+            },
+            {
+              "name": "session_id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string",
+                "title": "Session Id"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Successful Response",
+              "content": {
+                "application/json": {
+                  "schema": {}
+                }
+              }
+            },
+            "422": {
+              "description": "Validation Error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/apps/{app_name}/users/{user_id}/sessions": {
+        "get": {
+          "summary": "List Sessions",
+          "operationId": "list_sessions",
+          "parameters": [
+            {
+              "name": "app_name",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string",
+                "title": "App Name"
+              }
+            },
+            {
+              "name": "user_id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string",
+                "title": "User Id"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Successful Response",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/Session"
+                    },
+                    "title": "Response List Sessions Apps  App Name  Users  User Id  Sessions Get"
+                  }
+                }
+              }
+            },
+            "422": {
+              "description": "Validation Error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "post": {
+          "summary": "Create Session",
+          "operationId": "create_session",
+          "parameters": [
+            {
+              "name": "app_name",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string",
+                "title": "App Name"
+              }
+            },
+            {
+              "name": "user_id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string",
+                "title": "User Id"
+              }
+            }
+          ],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "anyOf": [
+                    {
+                      "type": "object",
+                      "additionalProperties": true
+                    },
+                    {
+                      "type": "string"
+                    }
+                  ],
+                  "title": "State"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Successful Response",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Session"
+                  }
+                }
+              }
+            },
+            "422": {
+              "description": "Validation Error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/apps/{app_name}/eval_sets/{eval_set_id}": {
+        "post": {
+          "summary": "Create Eval Set",
+          "description": "Creates an eval set, given the id.",
+          "operationId": "create_eval_set",
+          "parameters": [
+            {
+              "name": "app_name",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string",
+                "title": "App Name"
+              }
+            },
+            {
+              "name": "eval_set_id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string",
+                "title": "Eval Set Id"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Successful Response",
+              "content": {
+                "application/json": {
+                  "schema": {}
+                }
+              }
+            },
+            "422": {
+              "description": "Validation Error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/apps/{app_name}/eval_sets": {
+        "get": {
+          "summary": "List Eval Sets",
+          "description": "Lists all eval sets for the given app.",
+          "operationId": "list_eval_sets",
+          "parameters": [
+            {
+              "name": "app_name",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string",
+                "title": "App Name"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Successful Response",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    },
+                    "title": "Response List Eval Sets Apps  App Name  Eval Sets Get"
+                  }
+                }
+              }
+            },
+            "422": {
+              "description": "Validation Error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/apps/{app_name}/eval_sets/{eval_set_id}/add_session": {
+        "post": {
+          "summary": "Add Session To Eval Set",
+          "operationId": "add_session_to_eval_set",
+          "parameters": [
+            {
+              "name": "app_name",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string",
+                "title": "App Name"
+              }
+            },
+            {
+              "name": "eval_set_id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string",
+                "title": "Eval Set Id"
+              }
+            }
+          ],
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AddSessionToEvalSetRequest"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Successful Response",
+              "content": {
+                "application/json": {
+                  "schema": {}
+                }
+              }
+            },
+            "422": {
+              "description": "Validation Error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/apps/{app_name}/eval_sets/{eval_set_id}/evals": {
+        "get": {
+          "summary": "List Evals In Eval Set",
+          "description": "Lists all evals in an eval set.",
+          "operationId": "list_evals_in_eval_set",
+          "parameters": [
+            {
+              "name": "app_name",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string",
+                "title": "App Name"
+              }
+            },
+            {
+              "name": "eval_set_id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string",
+                "title": "Eval Set Id"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Successful Response",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    },
+                    "title": "Response List Evals In Eval Set Apps  App Name  Eval Sets  Eval Set Id  Evals Get"
+                  }
+                }
+              }
+            },
+            "422": {
+              "description": "Validation Error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/apps/{app_name}/eval_sets/{eval_set_id}/run_eval": {
+        "post": {
+          "summary": "Run Eval",
+          "operationId": "run_eval",
+          "parameters": [
+            {
+              "name": "app_name",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string",
+                "title": "App Name"
+              }
+            },
+            {
+              "name": "eval_set_id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string",
+                "title": "Eval Set Id"
+              }
+            }
+          ],
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RunEvalRequest"
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Successful Response",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/RunEvalResult"
+                    },
+                    "title": "Response Run Eval Apps  App Name  Eval Sets  Eval Set Id  Run Eval Post"
+                  }
+                }
+              }
+            },
+            "422": {
+              "description": "Validation Error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/apps/{app_name}/users/{user_id}/sessions/{session_id}/artifacts/{artifact_name}": {
+        "get": {
+          "summary": "Load Artifact",
+          "operationId": "load_artifact",
+          "parameters": [
+            {
+              "name": "app_name",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string",
+                "title": "App Name"
+              }
+            },
+            {
+              "name": "user_id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string",
+                "title": "User Id"
+              }
+            },
+            {
+              "name": "session_id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string",
+                "title": "Session Id"
+              }
+            },
+            {
+              "name": "artifact_name",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string",
+                "title": "Artifact Name"
+              }
+            },
+            {
+              "name": "version",
+              "in": "query",
+              "required": false,
+              "schema": {
+                "anyOf": [
+                  {
+                    "type": "integer"
+                  },
+                  {
+                    "type": "string"
+                  }
+                ],
+                "title": "Version"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Successful Response",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "anyOf": [
+                      {
+                        "$ref": "#/components/schemas/Part-Output"
+                      },
+                      {
+                        "type": "string"
+                      }
+                    ],
+                    "title": "Response Load Artifact Apps  App Name  Users  User Id  Sessions  Session Id  Artifacts  Artifact Name  Get"
+                  }
+                }
+              }
+            },
+            "422": {
+              "description": "Validation Error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "delete": {
+          "summary": "Delete Artifact",
+          "operationId": "delete_artifact",
+          "parameters": [
+            {
+              "name": "app_name",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string",
+                "title": "App Name"
+              }
+            },
+            {
+              "name": "user_id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string",
+                "title": "User Id"
+              }
+            },
+            {
+              "name": "session_id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string",
+                "title": "Session Id"
+              }
+            },
+            {
+              "name": "artifact_name",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string",
+                "title": "Artifact Name"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Successful Response",
+              "content": {
+                "application/json": {
+                  "schema": {}
+                }
+              }
+            },
+            "422": {
+              "description": "Validation Error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/apps/{app_name}/users/{user_id}/sessions/{session_id}/artifacts/{artifact_name}/versions/{version_id}": {
+        "get": {
+          "summary": "Load Artifact Version",
+          "operationId": "load_artifact_version",
+          "parameters": [
+            {
+              "name": "app_name",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string",
+                "title": "App Name"
+              }
+            },
+            {
+              "name": "user_id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string",
+                "title": "User Id"
+              }
+            },
+            {
+              "name": "session_id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string",
+                "title": "Session Id"
+              }
+            },
+            {
+              "name": "artifact_name",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string",
+                "title": "Artifact Name"
+              }
+            },
+            {
+              "name": "version_id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "integer",
+                "title": "Version Id"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Successful Response",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "anyOf": [
+                      {
+                        "$ref": "#/components/schemas/Part-Output"
+                      },
+                      {
+                        "type": "string"
+                      }
+                    ],
+                    "title": "Response Load Artifact Version Apps  App Name  Users  User Id  Sessions  Session Id  Artifacts  Artifact Name  Versions  Version Id  Get"
+                  }
+                }
+              }
+            },
+            "422": {
+              "description": "Validation Error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/apps/{app_name}/users/{user_id}/sessions/{session_id}/artifacts": {
+        "get": {
+          "summary": "List Artifact Names",
+          "operationId": "list_artifact_names",
+          "parameters": [
+            {
+              "name": "app_name",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string",
+                "title": "App Name"
+              }
+            },
+            {
+              "name": "user_id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string",
+                "title": "User Id"
+              }
+            },
+            {
+              "name": "session_id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string",
+                "title": "Session Id"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Successful Response",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    },
+                    "title": "Response List Artifact Names Apps  App Name  Users  User Id  Sessions  Session Id  Artifacts Get"
+                  }
+                }
+              }
+            },
+            "422": {
+              "description": "Validation Error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/apps/{app_name}/users/{user_id}/sessions/{session_id}/artifacts/{artifact_name}/versions": {
+        "get": {
+          "summary": "List Artifact Versions",
+          "operationId": "list_artifact_versions",
+          "parameters": [
+            {
+              "name": "app_name",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string",
+                "title": "App Name"
+              }
+            },
+            {
+              "name": "user_id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string",
+                "title": "User Id"
+              }
+            },
+            {
+              "name": "session_id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string",
+                "title": "Session Id"
+              }
+            },
+            {
+              "name": "artifact_name",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string",
+                "title": "Artifact Name"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Successful Response",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    },
+                    "title": "Response List Artifact Versions Apps  App Name  Users  User Id  Sessions  Session Id  Artifacts  Artifact Name  Versions Get"
+                  }
+                }
+              }
+            },
+            "422": {
+              "description": "Validation Error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/run": {
+        "post": {
+          "summary": "Agent Run",
+          "operationId": "run",
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentRunRequest"
+                }
+              }
+            },
+            "required": true
+          },
+          "responses": {
+            "200": {
+              "description": "Successful Response",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "items": {
+                      "$ref": "#/components/schemas/Event"
+                    },
+                    "type": "array",
+                    "title": "Response Agent Run Run Post"
+                  }
+                }
+              }
+            },
+            "422": {
+              "description": "Validation Error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/run_sse": {
+        "post": {
+          "summary": "Agent Run Sse",
+          "operationId": "run_sse",
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AgentRunRequest"
+                }
+              }
+            },
+            "required": true
+          },
+          "responses": {
+            "200": {
+              "description": "Successful Response",
+              "content": {
+                "application/json": {
+                  "schema": {}
+                }
+              }
+            },
+            "422": {
+              "description": "Validation Error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/apps/{app_name}/users/{user_id}/sessions/{session_id}/events/{event_id}/graph": {
+        "get": {
+          "summary": "Get Event Graph",
+          "operationId": "get_event_graph",
+          "parameters": [
+            {
+              "name": "app_name",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string",
+                "title": "App Name"
+              }
+            },
+            {
+              "name": "user_id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string",
+                "title": "User Id"
+              }
+            },
+            {
+              "name": "session_id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string",
+                "title": "Session Id"
+              }
+            },
+            {
+              "name": "event_id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string",
+                "title": "Event Id"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Successful Response",
+              "content": {
+                "application/json": {
+                  "schema": {}
+                }
+              }
+            },
+            "422": {
+              "description": "Validation Error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/": {
+        "get": {
+          "summary": "Redirect To Dev Ui",
+          "operationId": "redirect_to_dev_ui",
+          "responses": {
+            "200": {
+              "description": "Successful Response",
+              "content": {
+                "application/json": {
+                  "schema": {}
+                }
+              }
+            }
+          }
+        }
+      },
+      "/dev-ui": {
+        "get": {
+          "summary": "Dev Ui",
+          "operationId": "dev_ui",
+          "responses": {
+            "200": {
+              "description": "Successful Response",
+              "content": {
+                "application/json": {
+                  "schema": {}
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "components": {
+      "schemas": {
+        "APIKey": {
+          "properties": {
+            "type": {
+              "$ref": "#/components/schemas/SecuritySchemeType",
+              "default": "apiKey"
+            },
+            "description": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "string"
+                }
+              ],
+              "title": "Description"
+            },
+            "in": {
+              "$ref": "#/components/schemas/APIKeyIn"
+            },
+            "name": {
+              "type": "string",
+              "title": "Name"
+            }
+          },
+          "additionalProperties": true,
+          "type": "object",
+          "required": [
+            "in",
+            "name"
+          ],
+          "title": "APIKey"
+        },
+        "APIKeyIn": {
+          "type": "string",
+          "enum": [
+            "query",
+            "header",
+            "cookie"
+          ],
+          "title": "APIKeyIn"
+        },
+        "AddSessionToEvalSetRequest": {
+          "properties": {
+            "eval_id": {
+              "type": "string",
+              "title": "Eval Id"
+            },
+            "session_id": {
+              "type": "string",
+              "title": "Session Id"
+            },
+            "user_id": {
+              "type": "string",
+              "title": "User Id"
+            }
+          },
+          "type": "object",
+          "required": [
+            "eval_id",
+            "session_id",
+            "user_id"
+          ],
+          "title": "AddSessionToEvalSetRequest"
+        },
+        "AgentRunRequest": {
+          "properties": {
+            "app_name": {
+              "type": "string",
+              "title": "App Name"
+            },
+            "user_id": {
+              "type": "string",
+              "title": "User Id"
+            },
+            "session_id": {
+              "type": "string",
+              "title": "Session Id"
+            },
+            "new_message": {
+              "$ref": "#/components/schemas/Content-Input"
+            },
+            "streaming": {
+              "type": "boolean",
+              "title": "Streaming",
+              "default": false
+            }
+          },
+          "type": "object",
+          "required": [
+            "app_name",
+            "user_id",
+            "session_id",
+            "new_message"
+          ],
+          "title": "AgentRunRequest"
+        },
+        "AuthConfig": {
+          "properties": {
+            "auth_scheme": {
+              "anyOf": [
+                {
+                  "$ref": "#/components/schemas/APIKey"
+                },
+                {
+                  "$ref": "#/components/schemas/HTTPBase"
+                },
+                {
+                  "$ref": "#/components/schemas/OAuth2"
+                },
+                {
+                  "$ref": "#/components/schemas/OpenIdConnect"
+                },
+                {
+                  "$ref": "#/components/schemas/HTTPBearer"
+                },
+                {
+                  "$ref": "#/components/schemas/OpenIdConnectWithConfig"
+                }
+              ],
+              "title": "Auth Scheme"
+            },
+            "raw_auth_credential": {
+              "$ref": "#/components/schemas/AuthCredential"
+            },
+            "exchanged_auth_credential": {
+              "$ref": "#/components/schemas/AuthCredential"
+            }
+          },
+          "type": "object",
+          "required": [
+            "auth_scheme"
+          ],
+          "title": "AuthConfig",
+          "description": "The auth config sent by tool asking client to collect auth credentials and\n\nadk and client will help to fill in the response"
+        },
+        "AuthCredential": {
+          "properties": {
+            "auth_type": {
+              "$ref": "#/components/schemas/AuthCredentialTypes"
+            },
+            "resource_ref": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "string"
+                }
+              ],
+              "title": "Resource Ref"
+            },
+            "api_key": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "string"
+                }
+              ],
+              "title": "Api Key"
+            },
+            "http": {
+              "anyOf": [
+                {
+                  "$ref": "#/components/schemas/HttpAuth"
+                },
+                {
+                  "type": "string"
+                }
+              ]
+            },
+            "service_account": {
+              "anyOf": [
+                {
+                  "$ref": "#/components/schemas/ServiceAccount"
+                },
+                {
+                  "type": "string"
+                }
+              ]
+            },
+            "oauth2": {
+              "anyOf": [
+                {
+                  "$ref": "#/components/schemas/OAuth2Auth"
+                },
+                {
+                  "type": "string"
+                }
+              ]
+            }
+          },
+          "additionalProperties": true,
+          "type": "object",
+          "required": [
+            "auth_type"
+          ],
+          "title": "AuthCredential",
+          "description": "Data class representing an authentication credential.\n\nTo exchange for the actual credential, please use\nCredentialExchanger.exchange_credential().\n\nExamples: API Key Auth\nAuthCredential(\n    auth_type=AuthCredentialTypes.API_KEY,\n    api_key=\"1234\",\n)\n\nExample: HTTP Auth\nAuthCredential(\n    auth_type=AuthCredentialTypes.HTTP,\n    http=HttpAuth(\n        scheme=\"basic\",\n        credentials=HttpCredentials(username=\"user\", password=\"password\"),\n    ),\n)\n\nExample: OAuth2 Bearer Token in HTTP Header\nAuthCredential(\n    auth_type=AuthCredentialTypes.HTTP,\n    http=HttpAuth(\n        scheme=\"bearer\",\n        credentials=HttpCredentials(token=\"eyAkaknabna....\"),\n    ),\n)\n\nExample: OAuth2 Auth with Authorization Code Flow\nAuthCredential(\n    auth_type=AuthCredentialTypes.OAUTH2,\n    oauth2=OAuth2Auth(\n        client_id=\"1234\",\n        client_secret=\"secret\",\n    ),\n)\n\nExample: OpenID Connect Auth\nAuthCredential(\n    auth_type=AuthCredentialTypes.OPEN_ID_CONNECT,\n    oauth2=OAuth2Auth(\n        client_id=\"1234\",\n        client_secret=\"secret\",\n        redirect_uri=\"https://example.com\",\n        scopes=[\"scope1\", \"scope2\"],\n    ),\n)\n\nExample: Auth with resource reference\nAuthCredential(\n    auth_type=AuthCredentialTypes.API_KEY,\n    resource_ref=\"projects/1234/locations/us-central1/resources/resource1\",\n)"
+        },
+        "AuthCredentialTypes": {
+          "type": "string",
+          "enum": [
+            "apiKey",
+            "http",
+            "oauth2",
+            "openIdConnect",
+            "serviceAccount"
+          ],
+          "title": "AuthCredentialTypes",
+          "description": "Represents the type of authentication credential."
+        },
+        "Blob": {
+          "properties": {
+            "data": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "format": "base64url"
+                },
+                {
+                  "type": "string"
+                }
+              ],
+              "title": "Data",
+              "description": "Required. Raw bytes."
+            },
+            "mimeType": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "string"
+                }
+              ],
+              "title": "Mimetype",
+              "description": "Required. The IANA standard MIME type of the source data."
+            }
+          },
+          "additionalProperties": false,
+          "type": "object",
+          "title": "Blob",
+          "description": "Content blob."
+        },
+        "CodeExecutionResult": {
+          "properties": {
+            "outcome": {
+              "anyOf": [
+                {
+                  "$ref": "#/components/schemas/Outcome"
+                },
+                {
+                  "type": "string"
+                }
+              ],
+              "description": "Required. Outcome of the code execution."
+            },
+            "output": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "string"
+                }
+              ],
+              "title": "Output",
+              "description": "Optional. Contains stdout when code execution is successful, stderr or other description otherwise."
+            }
+          },
+          "additionalProperties": false,
+          "type": "object",
+          "title": "CodeExecutionResult",
+          "description": "Result of executing the [ExecutableCode].\n\nAlways follows a `part` containing the [ExecutableCode]."
+        },
+        "Content-Input": {
+          "properties": {
+            "parts": {
+              "anyOf": [
+                {
+                  "items": {
+                    "$ref": "#/components/schemas/Part-Input"
+                  },
+                  "type": "array"
+                },
+                {
+                  "type": "string"
+                }
+              ],
+              "title": "Parts",
+              "description": "List of parts that constitute a single message. Each part may have\n      a different IANA MIME type."
+            },
+            "role": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "string"
+                }
+              ],
+              "title": "Role",
+              "description": "Optional. The producer of the content. Must be either 'user' or\n      'model'. Useful to set for multi-turn conversations, otherwise can be\n      empty. If role is not specified, SDK will determine the role."
+            }
+          },
+          "additionalProperties": false,
+          "type": "object",
+          "title": "Content",
+          "description": "Contains the multi-part content of a message."
+        },
+        "Content-Output": {
+          "properties": {
+            "parts": {
+              "anyOf": [
+                {
+                  "items": {
+                    "$ref": "#/components/schemas/Part-Output"
+                  },
+                  "type": "array"
+                },
+                {
+                  "type": "string"
+                }
+              ],
+              "title": "Parts",
+              "description": "List of parts that constitute a single message. Each part may have\n      a different IANA MIME type."
+            },
+            "role": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "string"
+                }
+              ],
+              "title": "Role",
+              "description": "Optional. The producer of the content. Must be either 'user' or\n      'model'. Useful to set for multi-turn conversations, otherwise can be\n      empty. If role is not specified, SDK will determine the role."
+            }
+          },
+          "additionalProperties": false,
+          "type": "object",
+          "title": "Content",
+          "description": "Contains the multi-part content of a message."
+        },
+        "EvalMetric": {
+          "properties": {
+            "metric_name": {
+              "type": "string",
+              "title": "Metric Name"
+            },
+            "threshold": {
+              "type": "number",
+              "title": "Threshold"
+            }
+          },
+          "type": "object",
+          "required": [
+            "metric_name",
+            "threshold"
+          ],
+          "title": "EvalMetric"
+        },
+        "EvalMetricResult": {
+          "properties": {
+            "score": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "string"
+                }
+              ],
+              "title": "Score"
+            },
+            "eval_status": {
+              "$ref": "#/components/schemas/EvalStatus"
+            }
+          },
+          "type": "object",
+          "required": [
+            "score",
+            "eval_status"
+          ],
+          "title": "EvalMetricResult"
+        },
+        "EvalStatus": {
+          "type": "integer",
+          "enum": [
+            1,
+            2,
+            3
+          ],
+          "title": "EvalStatus"
+        },
+        "Event": {
+          "properties": {
+            "content": {
+              "anyOf": [
+                {
+                  "$ref": "#/components/schemas/Content-Output"
+                },
+                {
+                  "type": "string"
+                }
+              ]
+            },
+            "grounding_metadata": {
+              "anyOf": [
+                {
+                  "$ref": "#/components/schemas/GroundingMetadata"
+                },
+                {
+                  "type": "string"
+                }
+              ]
+            },
+            "partial": {
+              "anyOf": [
+                {
+                  "type": "boolean"
+                },
+                {
+                  "type": "string"
+                }
+              ],
+              "title": "Partial"
+            },
+            "turn_complete": {
+              "anyOf": [
+                {
+                  "type": "boolean"
+                },
+                {
+                  "type": "string"
+                }
+              ],
+              "title": "Turn Complete"
+            },
+            "error_code": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "string"
+                }
+              ],
+              "title": "Error Code"
+            },
+            "error_message": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "string"
+                }
+              ],
+              "title": "Error Message"
+            },
+            "interrupted": {
+              "anyOf": [
+                {
+                  "type": "boolean"
+                },
+                {
+                  "type": "string"
+                }
+              ],
+              "title": "Interrupted"
+            },
+            "invocation_id": {
+              "type": "string",
+              "title": "Invocation Id",
+              "default": ""
+            },
+            "author": {
+              "type": "string",
+              "title": "Author"
+            },
+            "actions": {
+              "$ref": "#/components/schemas/EventActions"
+            },
+            "long_running_tool_ids": {
+              "anyOf": [
+                {
+                  "items": {
+                    "type": "string"
+                  },
+                  "type": "array",
+                  "uniqueItems": true
+                },
+                {
+                  "type": "string"
+                }
+              ],
+              "title": "Long Running Tool Ids"
+            },
+            "branch": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "string"
+                }
+              ],
+              "title": "Branch"
+            },
+            "id": {
+              "type": "string",
+              "title": "Id",
+              "default": ""
+            },
+            "timestamp": {
+              "type": "number",
+              "title": "Timestamp"
+            }
+          },
+          "additionalProperties": false,
+          "type": "object",
+          "required": [
+            "author"
+          ],
+          "title": "Event",
+          "description": "Represents an event in a conversation between agents and users.\n\nIt is used to store the content of the conversation, as well as the actions\ntaken by the agents like function calls, etc.\n\nAttributes:\n  invocation_id: The invocation ID of the event.\n  author: \"user\" or the name of the agent, indicating who appended the event\n    to the session.\n  actions: The actions taken by the agent.\n  long_running_tool_ids: The ids of the long running function calls.\n  branch: The branch of the event.\n  id: The unique identifier of the event.\n  timestamp: The timestamp of the event.\n  is_final_response: Whether the event is the final response of the agent.\n  get_function_calls: Returns the function calls in the event."
+        },
+        "EventActions": {
+          "properties": {
+            "skip_summarization": {
+              "anyOf": [
+                {
+                  "type": "boolean"
+                },
+                {
+                  "type": "string"
+                }
+              ],
+              "title": "Skip Summarization"
+            },
+            "state_delta": {
+              "additionalProperties": true,
+              "type": "object",
+              "title": "State Delta"
+            },
+            "artifact_delta": {
+              "additionalProperties": {
+                "type": "integer"
+              },
+              "type": "object",
+              "title": "Artifact Delta"
+            },
+            "transfer_to_agent": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "string"
+                }
+              ],
+              "title": "Transfer To Agent"
+            },
+            "escalate": {
+              "anyOf": [
+                {
+                  "type": "boolean"
+                },
+                {
+                  "type": "string"
+                }
+              ],
+              "title": "Escalate"
+            },
+            "requested_auth_configs": {
+              "additionalProperties": {
+                "$ref": "#/components/schemas/AuthConfig"
+              },
+              "type": "object",
+              "title": "Requested Auth Configs"
+            }
+          },
+          "additionalProperties": false,
+          "type": "object",
+          "title": "EventActions",
+          "description": "Represents the actions attached to an event."
+        },
+        "ExecutableCode": {
+          "properties": {
+            "code": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "string"
+                }
+              ],
+              "title": "Code",
+              "description": "Required. The code to be executed."
+            },
+            "language": {
+              "anyOf": [
+                {
+                  "$ref": "#/components/schemas/Language"
+                },
+                {
+                  "type": "string"
+                }
+              ],
+              "description": "Required. Programming language of the `code`."
+            }
+          },
+          "additionalProperties": false,
+          "type": "object",
+          "title": "ExecutableCode",
+          "description": "Code generated by the model that is meant to be executed, and the result returned to the model.\n\nGenerated when using the [FunctionDeclaration] tool and\n[FunctionCallingConfig] mode is set to [Mode.CODE]."
+        },
+        "FileData": {
+          "properties": {
+            "fileUri": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "string"
+                }
+              ],
+              "title": "Fileuri",
+              "description": "Required. URI."
+            },
+            "mimeType": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "string"
+                }
+              ],
+              "title": "Mimetype",
+              "description": "Required. The IANA standard MIME type of the source data."
+            }
+          },
+          "additionalProperties": false,
+          "type": "object",
+          "title": "FileData",
+          "description": "URI based data."
+        },
+        "FunctionCall": {
+          "properties": {
+            "id": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "string"
+                }
+              ],
+              "title": "Id",
+              "description": "The unique id of the function call. If populated, the client to execute the\n   `function_call` and return the response with the matching `id`."
+            },
+            "args": {
+              "anyOf": [
+                {
+                  "additionalProperties": true,
+                  "type": "object"
+                },
+                {
+                  "type": "string"
+                }
+              ],
+              "title": "Args",
+              "description": "Optional. Required. The function parameters and values in JSON object format. See [FunctionDeclaration.parameters] for parameter details."
+            },
+            "name": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "string"
+                }
+              ],
+              "title": "Name",
+              "description": "Required. The name of the function to call. Matches [FunctionDeclaration.name]."
+            }
+          },
+          "additionalProperties": false,
+          "type": "object",
+          "title": "FunctionCall",
+          "description": "A function call."
+        },
+        "FunctionResponse": {
+          "properties": {
+            "id": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "string"
+                }
+              ],
+              "title": "Id",
+              "description": "The id of the function call this response is for. Populated by the client\n   to match the corresponding function call `id`."
+            },
+            "name": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "string"
+                }
+              ],
+              "title": "Name",
+              "description": "Required. The name of the function to call. Matches [FunctionDeclaration.name] and [FunctionCall.name]."
+            },
+            "response": {
+              "anyOf": [
+                {
+                  "additionalProperties": true,
+                  "type": "object"
+                },
+                {
+                  "type": "string"
+                }
+              ],
+              "title": "Response",
+              "description": "Required. The function response in JSON object format. Use \"output\" key to specify function output and \"error\" key to specify error details (if any). If \"output\" and \"error\" keys are not specified, then whole \"response\" is treated as function output."
+            }
+          },
+          "additionalProperties": false,
+          "type": "object",
+          "title": "FunctionResponse",
+          "description": "A function response."
+        },
+        "GroundingChunk": {
+          "properties": {
+            "retrievedContext": {
+              "anyOf": [
+                {
+                  "$ref": "#/components/schemas/GroundingChunkRetrievedContext"
+                },
+                {
+                  "type": "string"
+                }
+              ],
+              "description": "Grounding chunk from context retrieved by the retrieval tools."
+            },
+            "web": {
+              "anyOf": [
+                {
+                  "$ref": "#/components/schemas/GroundingChunkWeb"
+                },
+                {
+                  "type": "string"
+                }
+              ],
+              "description": "Grounding chunk from the web."
+            }
+          },
+          "additionalProperties": false,
+          "type": "object",
+          "title": "GroundingChunk",
+          "description": "Grounding chunk."
+        },
+        "GroundingChunkRetrievedContext": {
+          "properties": {
+            "text": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "string"
+                }
+              ],
+              "title": "Text",
+              "description": "Text of the attribution."
+            },
+            "title": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "string"
+                }
+              ],
+              "title": "Title",
+              "description": "Title of the attribution."
+            },
+            "uri": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "string"
+                }
+              ],
+              "title": "Uri",
+              "description": "URI reference of the attribution."
+            }
+          },
+          "additionalProperties": false,
+          "type": "object",
+          "title": "GroundingChunkRetrievedContext",
+          "description": "Chunk from context retrieved by the retrieval tools."
+        },
+        "GroundingChunkWeb": {
+          "properties": {
+            "domain": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "string"
+                }
+              ],
+              "title": "Domain",
+              "description": "Domain of the (original) URI."
+            },
+            "title": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "string"
+                }
+              ],
+              "title": "Title",
+              "description": "Title of the chunk."
+            },
+            "uri": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "string"
+                }
+              ],
+              "title": "Uri",
+              "description": "URI reference of the chunk."
+            }
+          },
+          "additionalProperties": false,
+          "type": "object",
+          "title": "GroundingChunkWeb",
+          "description": "Chunk from the web."
+        },
+        "GroundingMetadata": {
+          "properties": {
+            "groundingChunks": {
+              "anyOf": [
+                {
+                  "items": {
+                    "$ref": "#/components/schemas/GroundingChunk"
+                  },
+                  "type": "array"
+                },
+                {
+                  "type": "string"
+                }
+              ],
+              "title": "Groundingchunks",
+              "description": "List of supporting references retrieved from specified grounding source."
+            },
+            "groundingSupports": {
+              "anyOf": [
+                {
+                  "items": {
+                    "$ref": "#/components/schemas/GroundingSupport"
+                  },
+                  "type": "array"
+                },
+                {
+                  "type": "string"
+                }
+              ],
+              "title": "Groundingsupports",
+              "description": "Optional. List of grounding support."
+            },
+            "retrievalMetadata": {
+              "anyOf": [
+                {
+                  "$ref": "#/components/schemas/RetrievalMetadata"
+                },
+                {
+                  "type": "string"
+                }
+              ],
+              "description": "Optional. Output only. Retrieval metadata."
+            },
+            "retrievalQueries": {
+              "anyOf": [
+                {
+                  "items": {
+                    "type": "string"
+                  },
+                  "type": "array"
+                },
+                {
+                  "type": "string"
+                }
+              ],
+              "title": "Retrievalqueries",
+              "description": "Optional. Queries executed by the retrieval tools."
+            },
+            "searchEntryPoint": {
+              "anyOf": [
+                {
+                  "$ref": "#/components/schemas/SearchEntryPoint"
+                },
+                {
+                  "type": "string"
+                }
+              ],
+              "description": "Optional. Google search entry for the following-up web searches."
+            },
+            "webSearchQueries": {
+              "anyOf": [
+                {
+                  "items": {
+                    "type": "string"
+                  },
+                  "type": "array"
+                },
+                {
+                  "type": "string"
+                }
+              ],
+              "title": "Websearchqueries",
+              "description": "Optional. Web search queries for the following-up web search."
+            }
+          },
+          "additionalProperties": false,
+          "type": "object",
+          "title": "GroundingMetadata",
+          "description": "Metadata returned to client when grounding is enabled."
+        },
+        "GroundingSupport": {
+          "properties": {
+            "confidenceScores": {
+              "anyOf": [
+                {
+                  "items": {
+                    "type": "number"
+                  },
+                  "type": "array"
+                },
+                {
+                  "type": "string"
+                }
+              ],
+              "title": "Confidencescores",
+              "description": "Confidence score of the support references. Ranges from 0 to 1. 1 is the most confident. This list must have the same size as the grounding_chunk_indices."
+            },
+            "groundingChunkIndices": {
+              "anyOf": [
+                {
+                  "items": {
+                    "type": "integer"
+                  },
+                  "type": "array"
+                },
+                {
+                  "type": "string"
+                }
+              ],
+              "title": "Groundingchunkindices",
+              "description": "A list of indices (into 'grounding_chunk') specifying the citations associated with the claim. For instance [1,3,4] means that grounding_chunk[1], grounding_chunk[3], grounding_chunk[4] are the retrieved content attributed to the claim."
+            },
+            "segment": {
+              "anyOf": [
+                {
+                  "$ref": "#/components/schemas/Segment"
+                },
+                {
+                  "type": "string"
+                }
+              ],
+              "description": "Segment of the content this support belongs to."
+            }
+          },
+          "additionalProperties": false,
+          "type": "object",
+          "title": "GroundingSupport",
+          "description": "Grounding support."
+        },
+        "HTTPBase": {
+          "properties": {
+            "type": {
+              "$ref": "#/components/schemas/SecuritySchemeType",
+              "default": "http"
+            },
+            "description": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "string"
+                }
+              ],
+              "title": "Description"
+            },
+            "scheme": {
+              "type": "string",
+              "title": "Scheme"
+            }
+          },
+          "additionalProperties": true,
+          "type": "object",
+          "required": [
+            "scheme"
+          ],
+          "title": "HTTPBase"
+        },
+        "HTTPBearer": {
+          "properties": {
+            "type": {
+              "$ref": "#/components/schemas/SecuritySchemeType",
+              "default": "http"
+            },
+            "description": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "string"
+                }
+              ],
+              "title": "Description"
+            },
+            "scheme": {
+              "type": "string",
+              "const": "bearer",
+              "title": "Scheme",
+              "default": "bearer"
+            },
+            "bearerFormat": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "string"
+                }
+              ],
+              "title": "Bearerformat"
+            }
+          },
+          "additionalProperties": true,
+          "type": "object",
+          "title": "HTTPBearer"
+        },
+        "HTTPValidationError": {
+          "properties": {
+            "detail": {
+              "items": {
+                "$ref": "#/components/schemas/ValidationError"
+              },
+              "type": "array",
+              "title": "Detail"
+            }
+          },
+          "type": "object",
+          "title": "HTTPValidationError"
+        },
+        "HttpAuth": {
+          "properties": {
+            "scheme": {
+              "type": "string",
+              "title": "Scheme"
+            },
+            "credentials": {
+              "$ref": "#/components/schemas/HttpCredentials"
+            }
+          },
+          "additionalProperties": true,
+          "type": "object",
+          "required": [
+            "scheme",
+            "credentials"
+          ],
+          "title": "HttpAuth",
+          "description": "The credentials and metadata for HTTP authentication."
+        },
+        "HttpCredentials": {
+          "properties": {
+            "username": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "string"
+                }
+              ],
+              "title": "Username"
+            },
+            "password": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "string"
+                }
+              ],
+              "title": "Password"
+            },
+            "token": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "string"
+                }
+              ],
+              "title": "Token"
+            }
+          },
+          "additionalProperties": true,
+          "type": "object",
+          "title": "HttpCredentials",
+          "description": "Represents the secret token value for HTTP authentication, like user name, password, oauth token, etc."
+        },
+        "Language": {
+          "type": "string",
+          "enum": [
+            "LANGUAGE_UNSPECIFIED",
+            "PYTHON"
+          ],
+          "title": "Language",
+          "description": "Required. Programming language of the `code`."
+        },
+        "OAuth2": {
+          "properties": {
+            "type": {
+              "$ref": "#/components/schemas/SecuritySchemeType",
+              "default": "oauth2"
+            },
+            "description": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "string"
+                }
+              ],
+              "title": "Description"
+            },
+            "flows": {
+              "$ref": "#/components/schemas/OAuthFlows"
+            }
+          },
+          "additionalProperties": true,
+          "type": "object",
+          "required": [
+            "flows"
+          ],
+          "title": "OAuth2"
+        },
+        "OAuth2Auth": {
+          "properties": {
+            "client_id": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "string"
+                }
+              ],
+              "title": "Client Id"
+            },
+            "client_secret": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "string"
+                }
+              ],
+              "title": "Client Secret"
+            },
+            "auth_uri": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "string"
+                }
+              ],
+              "title": "Auth Uri"
+            },
+            "state": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "string"
+                }
+              ],
+              "title": "State"
+            },
+            "redirect_uri": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "string"
+                }
+              ],
+              "title": "Redirect Uri"
+            },
+            "auth_response_uri": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "string"
+                }
+              ],
+              "title": "Auth Response Uri"
+            },
+            "auth_code": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "string"
+                }
+              ],
+              "title": "Auth Code"
+            },
+            "token": {
+              "anyOf": [
+                {
+                  "additionalProperties": true,
+                  "type": "object"
+                },
+                {
+                  "type": "string"
+                }
+              ],
+              "title": "Token"
+            }
+          },
+          "additionalProperties": true,
+          "type": "object",
+          "title": "OAuth2Auth",
+          "description": "Represents credential value and its metadata for a OAuth2 credential."
+        },
+        "OAuthFlowAuthorizationCode": {
+          "properties": {
+            "refreshUrl": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "string"
+                }
+              ],
+              "title": "Refreshurl"
+            },
+            "scopes": {
+              "additionalProperties": {
+                "type": "string"
+              },
+              "type": "object",
+              "title": "Scopes",
+              "default": {}
+            },
+            "authorizationUrl": {
+              "type": "string",
+              "title": "Authorizationurl"
+            },
+            "tokenUrl": {
+              "type": "string",
+              "title": "Tokenurl"
+            }
+          },
+          "additionalProperties": true,
+          "type": "object",
+          "required": [
+            "authorizationUrl",
+            "tokenUrl"
+          ],
+          "title": "OAuthFlowAuthorizationCode"
+        },
+        "OAuthFlowClientCredentials": {
+          "properties": {
+            "refreshUrl": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "string"
+                }
+              ],
+              "title": "Refreshurl"
+            },
+            "scopes": {
+              "additionalProperties": {
+                "type": "string"
+              },
+              "type": "object",
+              "title": "Scopes",
+              "default": {}
+            },
+            "tokenUrl": {
+              "type": "string",
+              "title": "Tokenurl"
+            }
+          },
+          "additionalProperties": true,
+          "type": "object",
+          "required": [
+            "tokenUrl"
+          ],
+          "title": "OAuthFlowClientCredentials"
+        },
+        "OAuthFlowImplicit": {
+          "properties": {
+            "refreshUrl": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "string"
+                }
+              ],
+              "title": "Refreshurl"
+            },
+            "scopes": {
+              "additionalProperties": {
+                "type": "string"
+              },
+              "type": "object",
+              "title": "Scopes",
+              "default": {}
+            },
+            "authorizationUrl": {
+              "type": "string",
+              "title": "Authorizationurl"
+            }
+          },
+          "additionalProperties": true,
+          "type": "object",
+          "required": [
+            "authorizationUrl"
+          ],
+          "title": "OAuthFlowImplicit"
+        },
+        "OAuthFlowPassword": {
+          "properties": {
+            "refreshUrl": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "string"
+                }
+              ],
+              "title": "Refreshurl"
+            },
+            "scopes": {
+              "additionalProperties": {
+                "type": "string"
+              },
+              "type": "object",
+              "title": "Scopes",
+              "default": {}
+            },
+            "tokenUrl": {
+              "type": "string",
+              "title": "Tokenurl"
+            }
+          },
+          "additionalProperties": true,
+          "type": "object",
+          "required": [
+            "tokenUrl"
+          ],
+          "title": "OAuthFlowPassword"
+        },
+        "OAuthFlows": {
+          "properties": {
+            "implicit": {
+              "anyOf": [
+                {
+                  "$ref": "#/components/schemas/OAuthFlowImplicit"
+                },
+                {
+                  "type": "string"
+                }
+              ]
+            },
+            "password": {
+              "anyOf": [
+                {
+                  "$ref": "#/components/schemas/OAuthFlowPassword"
+                },
+                {
+                  "type": "string"
+                }
+              ]
+            },
+            "clientCredentials": {
+              "anyOf": [
+                {
+                  "$ref": "#/components/schemas/OAuthFlowClientCredentials"
+                },
+                {
+                  "type": "string"
+                }
+              ]
+            },
+            "authorizationCode": {
+              "anyOf": [
+                {
+                  "$ref": "#/components/schemas/OAuthFlowAuthorizationCode"
+                },
+                {
+                  "type": "string"
+                }
+              ]
+            }
+          },
+          "additionalProperties": true,
+          "type": "object",
+          "title": "OAuthFlows"
+        },
+        "OpenIdConnect": {
+          "properties": {
+            "type": {
+              "$ref": "#/components/schemas/SecuritySchemeType",
+              "default": "openIdConnect"
+            },
+            "description": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "string"
+                }
+              ],
+              "title": "Description"
+            },
+            "openIdConnectUrl": {
+              "type": "string",
+              "title": "Openidconnecturl"
+            }
+          },
+          "additionalProperties": true,
+          "type": "object",
+          "required": [
+            "openIdConnectUrl"
+          ],
+          "title": "OpenIdConnect"
+        },
+        "OpenIdConnectWithConfig": {
+          "properties": {
+            "type": {
+              "$ref": "#/components/schemas/SecuritySchemeType",
+              "default": "openIdConnect"
+            },
+            "description": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "string"
+                }
+              ],
+              "title": "Description"
+            },
+            "authorization_endpoint": {
+              "type": "string",
+              "title": "Authorization Endpoint"
+            },
+            "token_endpoint": {
+              "type": "string",
+              "title": "Token Endpoint"
+            },
+            "userinfo_endpoint": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "string"
+                }
+              ],
+              "title": "Userinfo Endpoint"
+            },
+            "revocation_endpoint": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "string"
+                }
+              ],
+              "title": "Revocation Endpoint"
+            },
+            "token_endpoint_auth_methods_supported": {
+              "anyOf": [
+                {
+                  "items": {
+                    "type": "string"
+                  },
+                  "type": "array"
+                },
+                {
+                  "type": "string"
+                }
+              ],
+              "title": "Token Endpoint Auth Methods Supported"
+            },
+            "grant_types_supported": {
+              "anyOf": [
+                {
+                  "items": {
+                    "type": "string"
+                  },
+                  "type": "array"
+                },
+                {
+                  "type": "string"
+                }
+              ],
+              "title": "Grant Types Supported"
+            },
+            "scopes": {
+              "anyOf": [
+                {
+                  "items": {
+                    "type": "string"
+                  },
+                  "type": "array"
+                },
+                {
+                  "type": "string"
+                }
+              ],
+              "title": "Scopes"
+            }
+          },
+          "additionalProperties": true,
+          "type": "object",
+          "required": [
+            "authorization_endpoint",
+            "token_endpoint"
+          ],
+          "title": "OpenIdConnectWithConfig"
+        },
+        "Outcome": {
+          "type": "string",
+          "enum": [
+            "OUTCOME_UNSPECIFIED",
+            "OUTCOME_OK",
+            "OUTCOME_FAILED",
+            "OUTCOME_DEADLINE_EXCEEDED"
+          ],
+          "title": "Outcome",
+          "description": "Required. Outcome of the code execution."
+        },
+        "Part-Input": {
+          "properties": {
+            "videoMetadata": {
+              "anyOf": [
+                {
+                  "$ref": "#/components/schemas/VideoMetadata"
+                },
+                {
+                  "type": "string"
+                }
+              ],
+              "description": "Metadata for a given video."
+            },
+            "thought": {
+              "anyOf": [
+                {
+                  "type": "boolean"
+                },
+                {
+                  "type": "string"
+                }
+              ],
+              "title": "Thought",
+              "description": "Indicates if the part is thought from the model."
+            },
+            "codeExecutionResult": {
+              "anyOf": [
+                {
+                  "$ref": "#/components/schemas/CodeExecutionResult"
+                },
+                {
+                  "type": "string"
+                }
+              ],
+              "description": "Optional. Result of executing the [ExecutableCode]."
+            },
+            "executableCode": {
+              "anyOf": [
+                {
+                  "$ref": "#/components/schemas/ExecutableCode"
+                },
+                {
+                  "type": "string"
+                }
+              ],
+              "description": "Optional. Code generated by the model that is meant to be executed."
+            },
+            "fileData": {
+              "anyOf": [
+                {
+                  "$ref": "#/components/schemas/FileData"
+                },
+                {
+                  "type": "string"
+                }
+              ],
+              "description": "Optional. URI based data."
+            },
+            "functionCall": {
+              "anyOf": [
+                {
+                  "$ref": "#/components/schemas/FunctionCall"
+                },
+                {
+                  "type": "string"
+                }
+              ],
+              "description": "Optional. A predicted [FunctionCall] returned from the model that contains a string representing the [FunctionDeclaration.name] with the parameters and their values."
+            },
+            "functionResponse": {
+              "anyOf": [
+                {
+                  "$ref": "#/components/schemas/FunctionResponse"
+                },
+                {
+                  "type": "string"
+                }
+              ],
+              "description": "Optional. The result output of a [FunctionCall] that contains a string representing the [FunctionDeclaration.name] and a structured JSON object containing any output from the function call. It is used as context to the model."
+            },
+            "inlineData": {
+              "anyOf": [
+                {
+                  "$ref": "#/components/schemas/Blob"
+                },
+                {
+                  "type": "string"
+                }
+              ],
+              "description": "Optional. Inlined bytes data."
+            },
+            "text": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "string"
+                }
+              ],
+              "title": "Text",
+              "description": "Optional. Text part (can be code)."
+            }
+          },
+          "additionalProperties": false,
+          "type": "object",
+          "title": "Part",
+          "description": "A datatype containing media content.\n\nExactly one field within a Part should be set, representing the specific type\nof content being conveyed. Using multiple fields within the same `Part`\ninstance is considered invalid."
+        },
+        "Part-Output": {
+          "properties": {
+            "videoMetadata": {
+              "anyOf": [
+                {
+                  "$ref": "#/components/schemas/VideoMetadata"
+                },
+                {
+                  "type": "string"
+                }
+              ],
+              "description": "Metadata for a given video."
+            },
+            "thought": {
+              "anyOf": [
+                {
+                  "type": "boolean"
+                },
+                {
+                  "type": "string"
+                }
+              ],
+              "title": "Thought",
+              "description": "Indicates if the part is thought from the model."
+            },
+            "codeExecutionResult": {
+              "anyOf": [
+                {
+                  "$ref": "#/components/schemas/CodeExecutionResult"
+                },
+                {
+                  "type": "string"
+                }
+              ],
+              "description": "Optional. Result of executing the [ExecutableCode]."
+            },
+            "executableCode": {
+              "anyOf": [
+                {
+                  "$ref": "#/components/schemas/ExecutableCode"
+                },
+                {
+                  "type": "string"
+                }
+              ],
+              "description": "Optional. Code generated by the model that is meant to be executed."
+            },
+            "fileData": {
+              "anyOf": [
+                {
+                  "$ref": "#/components/schemas/FileData"
+                },
+                {
+                  "type": "string"
+                }
+              ],
+              "description": "Optional. URI based data."
+            },
+            "functionCall": {
+              "anyOf": [
+                {
+                  "$ref": "#/components/schemas/FunctionCall"
+                },
+                {
+                  "type": "string"
+                }
+              ],
+              "description": "Optional. A predicted [FunctionCall] returned from the model that contains a string representing the [FunctionDeclaration.name] with the parameters and their values."
+            },
+            "functionResponse": {
+              "anyOf": [
+                {
+                  "$ref": "#/components/schemas/FunctionResponse"
+                },
+                {
+                  "type": "string"
+                }
+              ],
+              "description": "Optional. The result output of a [FunctionCall] that contains a string representing the [FunctionDeclaration.name] and a structured JSON object containing any output from the function call. It is used as context to the model."
+            },
+            "inlineData": {
+              "anyOf": [
+                {
+                  "$ref": "#/components/schemas/Blob"
+                },
+                {
+                  "type": "string"
+                }
+              ],
+              "description": "Optional. Inlined bytes data."
+            },
+            "text": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "string"
+                }
+              ],
+              "title": "Text",
+              "description": "Optional. Text part (can be code)."
+            }
+          },
+          "additionalProperties": false,
+          "type": "object",
+          "title": "Part",
+          "description": "A datatype containing media content.\n\nExactly one field within a Part should be set, representing the specific type\nof content being conveyed. Using multiple fields within the same `Part`\ninstance is considered invalid."
+        },
+        "RetrievalMetadata": {
+          "properties": {
+            "googleSearchDynamicRetrievalScore": {
+              "anyOf": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "string"
+                }
+              ],
+              "title": "Googlesearchdynamicretrievalscore",
+              "description": "Optional. Score indicating how likely information from Google Search could help answer the prompt. The score is in the range `[0, 1]`, where 0 is the least likely and 1 is the most likely. This score is only populated when Google Search grounding and dynamic retrieval is enabled. It will be compared to the threshold to determine whether to trigger Google Search."
+            }
+          },
+          "additionalProperties": false,
+          "type": "object",
+          "title": "RetrievalMetadata",
+          "description": "Metadata related to retrieval in the grounding flow."
+        },
+        "RunEvalRequest": {
+          "properties": {
+            "eval_ids": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array",
+              "title": "Eval Ids"
+            },
+            "eval_metrics": {
+              "items": {
+                "$ref": "#/components/schemas/EvalMetric"
+              },
+              "type": "array",
+              "title": "Eval Metrics"
+            }
+          },
+          "type": "object",
+          "required": [
+            "eval_ids",
+            "eval_metrics"
+          ],
+          "title": "RunEvalRequest"
+        },
+        "RunEvalResult": {
+          "properties": {
+            "eval_set_id": {
+              "type": "string",
+              "title": "Eval Set Id"
+            },
+            "eval_id": {
+              "type": "string",
+              "title": "Eval Id"
+            },
+            "final_eval_status": {
+              "$ref": "#/components/schemas/EvalStatus"
+            },
+            "eval_metric_results": {
+              "items": {
+                "prefixItems": [
+                  {
+                    "$ref": "#/components/schemas/EvalMetric"
+                  },
+                  {
+                    "$ref": "#/components/schemas/EvalMetricResult"
+                  }
+                ],
+                "type": "array",
+                "maxItems": 2,
+                "minItems": 2
+              },
+              "type": "array",
+              "title": "Eval Metric Results"
+            },
+            "session_id": {
+              "type": "string",
+              "title": "Session Id"
+            }
+          },
+          "type": "object",
+          "required": [
+            "eval_set_id",
+            "eval_id",
+            "final_eval_status",
+            "eval_metric_results",
+            "session_id"
+          ],
+          "title": "RunEvalResult"
+        },
+        "SearchEntryPoint": {
+          "properties": {
+            "renderedContent": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "string"
+                }
+              ],
+              "title": "Renderedcontent",
+              "description": "Optional. Web content snippet that can be embedded in a web page or an app webview."
+            },
+            "sdkBlob": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "format": "base64url"
+                },
+                {
+                  "type": "string"
+                }
+              ],
+              "title": "Sdkblob",
+              "description": "Optional. Base64 encoded JSON representing array of tuple."
+            }
+          },
+          "additionalProperties": false,
+          "type": "object",
+          "title": "SearchEntryPoint",
+          "description": "Google search entry point."
+        },
+        "SecuritySchemeType": {
+          "type": "string",
+          "enum": [
+            "apiKey",
+            "http",
+            "oauth2",
+            "openIdConnect"
+          ],
+          "title": "SecuritySchemeType"
+        },
+        "Segment": {
+          "properties": {
+            "endIndex": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "type": "string"
+                }
+              ],
+              "title": "Endindex",
+              "description": "Output only. End index in the given Part, measured in bytes. Offset from the start of the Part, exclusive, starting at zero."
+            },
+            "partIndex": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "type": "string"
+                }
+              ],
+              "title": "Partindex",
+              "description": "Output only. The index of a Part object within its parent Content object."
+            },
+            "startIndex": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "type": "string"
+                }
+              ],
+              "title": "Startindex",
+              "description": "Output only. Start index in the given Part, measured in bytes. Offset from the start of the Part, inclusive, starting at zero."
+            },
+            "text": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "string"
+                }
+              ],
+              "title": "Text",
+              "description": "Output only. The text corresponding to the segment from the response."
+            }
+          },
+          "additionalProperties": false,
+          "type": "object",
+          "title": "Segment",
+          "description": "Segment of the content."
+        },
+        "ServiceAccount": {
+          "properties": {
+            "service_account_credential": {
+              "anyOf": [
+                {
+                  "$ref": "#/components/schemas/ServiceAccountCredential"
+                },
+                {
+                  "type": "string"
+                }
+              ]
+            },
+            "scopes": {
+              "items": {
+                "type": "string"
+              },
+              "type": "array",
+              "title": "Scopes"
+            },
+            "use_default_credential": {
+              "anyOf": [
+                {
+                  "type": "boolean"
+                },
+                {
+                  "type": "string"
+                }
+              ],
+              "title": "Use Default Credential",
+              "default": false
+            }
+          },
+          "additionalProperties": true,
+          "type": "object",
+          "required": [
+            "scopes"
+          ],
+          "title": "ServiceAccount",
+          "description": "Represents Google Service Account configuration."
+        },
+        "ServiceAccountCredential": {
+          "properties": {
+            "type": {
+              "type": "string",
+              "title": "Type",
+              "default": ""
+            },
+            "project_id": {
+              "type": "string",
+              "title": "Project Id"
+            },
+            "private_key_id": {
+              "type": "string",
+              "title": "Private Key Id"
+            },
+            "private_key": {
+              "type": "string",
+              "title": "Private Key"
+            },
+            "client_email": {
+              "type": "string",
+              "title": "Client Email"
+            },
+            "client_id": {
+              "type": "string",
+              "title": "Client Id"
+            },
+            "auth_uri": {
+              "type": "string",
+              "title": "Auth Uri"
+            },
+            "token_uri": {
+              "type": "string",
+              "title": "Token Uri"
+            },
+            "auth_provider_x509_cert_url": {
+              "type": "string",
+              "title": "Auth Provider X509 Cert Url"
+            },
+            "client_x509_cert_url": {
+              "type": "string",
+              "title": "Client X509 Cert Url"
+            },
+            "universe_domain": {
+              "type": "string",
+              "title": "Universe Domain"
+            }
+          },
+          "additionalProperties": true,
+          "type": "object",
+          "required": [
+            "project_id",
+            "private_key_id",
+            "private_key",
+            "client_email",
+            "client_id",
+            "auth_uri",
+            "token_uri",
+            "auth_provider_x509_cert_url",
+            "client_x509_cert_url",
+            "universe_domain"
+          ],
+          "title": "ServiceAccountCredential",
+          "description": "Represents Google Service Account configuration.\n\nAttributes:\n  type: The type should be \"service_account\".\n  project_id: The project ID.\n  private_key_id: The ID of the private key.\n  private_key: The private key.\n  client_email: The client email.\n  client_id: The client ID.\n  auth_uri: The authorization URI.\n  token_uri: The token URI.\n  auth_provider_x509_cert_url: URL for auth provider's X.509 cert.\n  client_x509_cert_url: URL for the client's X.509 cert.\n  universe_domain: The universe domain.\n\nExample:\n\n    config = ServiceAccountCredential(\n        type_=\"service_account\",\n        project_id=\"your_project_id\",\n        private_key_id=\"your_private_key_id\",\n        private_key=\"-----BEGIN PRIVATE KEY-----...\",\n        client_email=\"...@....iam.gserviceaccount.com\",\n        client_id=\"your_client_id\",\n        auth_uri=\"https://accounts.google.com/o/oauth2/auth\",\n        token_uri=\"https://oauth2.googleapis.com/token\",\n        auth_provider_x509_cert_url=\"https://www.googleapis.com/oauth2/v1/certs\",\n        client_x509_cert_url=\"https://www.googleapis.com/robot/v1/metadata/x509/...\",\n        universe_domain=\"googleapis.com\"\n    )\n\n\n    config = ServiceAccountConfig.model_construct(**{\n        ...service account config dict\n    })"
+        },
+        "Session": {
+          "properties": {
+            "id": {
+              "type": "string",
+              "title": "Id"
+            },
+            "app_name": {
+              "type": "string",
+              "title": "App Name"
+            },
+            "user_id": {
+              "type": "string",
+              "title": "User Id"
+            },
+            "state": {
+              "additionalProperties": true,
+              "type": "object",
+              "title": "State"
+            },
+            "events": {
+              "items": {
+                "$ref": "#/components/schemas/Event"
+              },
+              "type": "array",
+              "title": "Events"
+            },
+            "last_update_time": {
+              "type": "number",
+              "title": "Last Update Time",
+              "default": 0
+            }
+          },
+          "additionalProperties": false,
+          "type": "object",
+          "required": [
+            "id",
+            "app_name",
+            "user_id"
+          ],
+          "title": "Session",
+          "description": "Represents a series of interactions between a user and agents.\n\nAttributes:\n  id: The unique identifier of the session.\n  app_name: The name of the app.\n  user_id: The id of the user.\n  state: The state of the session.\n  events: The events of the session, e.g. user input, model response, function\n    call/response, etc.\n  last_update_time: The last update time of the session."
+        },
+        "ValidationError": {
+          "properties": {
+            "loc": {
+              "items": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "integer"
+                  }
+                ]
+              },
+              "type": "array",
+              "title": "Location"
+            },
+            "msg": {
+              "type": "string",
+              "title": "Message"
+            },
+            "type": {
+              "type": "string",
+              "title": "Error Type"
+            }
+          },
+          "type": "object",
+          "required": [
+            "loc",
+            "msg",
+            "type"
+          ],
+          "title": "ValidationError"
+        },
+        "VideoMetadata": {
+          "properties": {
+            "endOffset": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "string"
+                }
+              ],
+              "title": "Endoffset",
+              "description": "Optional. The end offset of the video."
+            },
+            "startOffset": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "string"
+                }
+              ],
+              "title": "Startoffset",
+              "description": "Optional. The start offset of the video."
+            }
+          },
+          "additionalProperties": false,
+          "type": "object",
+          "title": "VideoMetadata",
+          "description": "Metadata describes the input video content."
+        }
+      }
+    }
+  }
