@@ -80,7 +80,7 @@ func main() {
 
 ```
 
-## API Endpoints
+## Client Methods
 * **`ListEvalSets(ctx context.Context, appName string, ...)`**
     * Retrieves a list of evaluation set IDs for a specific application.
 
@@ -146,7 +146,7 @@ func main() {
 
 ## Contributing
 
-Contributions are welcome\! Please feel free to submit pull requests or open issues on the [GitHub repository](https://www.google.com/search?q=https://github.com/goudtho/adk-client-go).
+Contributions are welcome\! Please feel free to submit pull requests or open issues on the [GitHub repository](https://github.com/goudtho/adk-client-go).
 
 ## License
 
