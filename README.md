@@ -2,11 +2,11 @@
 
 [![Go Reference](https://pkg.go.dev/badge/github.com/goudtho/adk-client-go.svg)](https://pkg.go.dev/github.com/goudtho/adk-client-go)
 
-This repository contains a Go client for the REST API of the [Google Agent Development Kit](https://github.com/google/adk-python).
+This repository contains a Go client for the REST API of [Google's Agent Development Kit](https://github.com/google/adk-python).
 
 ## Description
 
-The [Google Agent Development Kit (ADK)](https://github.com/google/adk-python) provides tools and infrastructure for building, evaluating, and deploying AI agents. This Go client allows developers to interact with the ADK's REST API programmatically to manage resources such as applications, sessions, evaluations, and artifacts.
+[Google's Agent Development Kit (ADK)](https://github.com/google/adk-python) provides tools and infrastructure for building, evaluating, and deploying AI agents. This Go client allows developers to interact with the ADK's REST API programmatically to manage resources such as applications, sessions, evaluations, and artifacts.
 
 ## Installation
 
@@ -77,7 +77,7 @@ func main() {
 	} else {
 		log.Printf("Error creating session: Status %s, Body: %s", sessionResp.Status(), string(sessionResp.Body))
 	}
-
+}
 ```
 
 ## Client Methods
